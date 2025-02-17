@@ -9,4 +9,4 @@ cartIcon.onclick = () => {
 //  Close Cart//
 closeIcon.onclick = () => {
     cart.classList.remove("active")
-};1
+}

@@ -24,6 +24,9 @@ body{
     color: var(--bg-color);
     background: var(--container-color);
 }
+section{
+    padding: 4rem o 3rem; /*Espacio que hay entre las imagenes*/
+}
 .container{
     max-width: 1068px;
     margin: auto;
@@ -36,7 +39,7 @@ header{
     left: 0;/* Coloca el <header> en la  parte izquierda*/
     width: 100%;/* Esto hace que ocupe todo el ancho disponible.*/
     background: var(--container-color);/* Define el color de fondo del <header> con el root en este caso bg-color #ffff que es color blanco*/
-    box-shadow: 0 1px 4px hsla(0, 0, 98%, 0.1);/* Añade una sombra al <header> para darle un efecto elevado.*/
+    box-shadow: 0 1px 4px hsla(0, 0%, 98%, 0.1);/* Añade una sombra al <header> para darle un efecto elevado.*/
     z-index: 100;/* Elimina el margen*/
 }
 .nav{
@@ -130,46 +133,69 @@ header{
     position: absolute;
     top: 1rem;
     right: 0.0rem;
-    font-size: 2rem;
+    font-size: 2rem; /* Tamaño del ícono: 2 rem */
     color: var(--text-color);
-    cursor: pointer;
+    cursor: pointer;  /* Cambia el cursor a "mano" al pasar el mouse */
 }
 .cart-box{
     display: grid;
     grid-template-columns: 32% 50% 18%;
-    align-items: center;
-    gap: 1rem;
-    margin-top: 1rem;
+    align-items: center;   /* Centra verticalmente los elementos */
+    gap: 1rem;  /* Espacio de 1 rem entre columnas */
+    margin-top: 1rem;  /* Margen superior de 1 rem */
 }
 .cart-img{
     width: 100px;
     height: 100px;
-    object-fit: contain;
+    object-fit: contain;  /* Ajusta la imagen sin recortarla */
     object-position:center ;
     padding: 10px;
 }
 .detail-box{
-    display: grid;
-    row-gap: 0.5rem;
+    display: grid;  /* Usa CSS Grid para alinear los detalles */
+    row-gap: 0.5rem;  /* Espacio vertical entre filas (0.5 rem) */
 }
 .cart-product-title{
     font-size: 1rem;
-    font-weight: 500;
-    text-transform: uppercase;
+    font-weight: 500;  /* Peso de fuente medio (negrita ligera) */
+    text-transform: uppercase;  /* Convierte el texto a MAYÚSCULAS */
 }
 .cart-price{
     font-weight: 500;
 }
 .cart-quantity{
     border: 1px solid var(--text-color);
-    outline-color:var(--main-color) ;
-    width: 2.8rem;
+    outline-color:var(--main-color) ; /* Color del borde al enfocar */
+    width: 2.8rem;  /* Ancho del input (2.8 rem) */
     text-align: center;
     font-size: 1rem;
-    border-radius: 4px;
+    border-radius: 4px; /* Bordes redondeados de 4px */
 }
 .cart-remove{
-    font-size: 24px;
+    font-size: 24px; /* Tamaño del ícono (24px) */
     color: var(--main-color);
-    cursor: pointer;
+    cursor: pointer;  /* Cambia el cursor a "mano" al pasar el mouse */
+}
+.selection-title{
+    font-size: 1.5rem ;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+.shop{
+    margin-top: 2rem; /* Margen superior de 2 rem */
+}
+.shop-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,auto));
+    /* Cada columna tendrá un ancho mínimo de 200px.
+    Las columnas se expandirán automáticamente si hay espacio disponible.
+    Si el ancho de la pantalla se reduce, las columnas se ajustarán o apilarán.*/
+    gap: 1.5rem ;
+}
+.product-box{
+    position: relative;
+    background: #2d2e37;
+    padding: 5px;
+    transition:0.4 cubic-bezier(0.075, 0.82.0165, 1) ;
 }
