@@ -1,0 +1,310 @@
+/* Google Fonts*/
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+*{ 
+    font-family: 'Poppins', sans-serif; /* Esta regla hace que toda la página use Poppins por defecto, sin necesidad de agregar clases manualmente a cada elemento*/
+    margin:0;/* Elimina el margen*/
+    padding:0;/* Elimina el relleno (padding)*/
+    scroll-padding-top: 2rem;/* Agrega un espacio superior de 2 rem cuando usas scroll interno.*/
+    scroll-behavior: smooth;/* Hace que el desplazamiento (scroll) sea suave en lugar de brusco cuando usas anclas*/
+    box-sizing: border-box;/* Cambia el modelo de caja de los elementos.*/
+    list-style: none;/*Elimina los estilos de listas */
+    text-decoration: none;/* Elimina la decoración del texto, como el subrayado en los enlaces*/
+}
+/* Some Variables*/
+:root { /* pseudo-c=================================================lase raíz*/
+    --main-color: #fd4646;
+    --text-color: #02ac70;
+    --bg-color: #fff;
+    --container-color: #1e1e2a;
+}
+img{
+    width: 100%; /*Establece el ancho*/
+}
+body{
+    color: var(--bg-color);
+    background: var(--container-color);
+}
+section{
+    padding: 4rem o 3rem; /*Espacio que hay entre las imagenes*/
+}
+.container{
+    max-width: 1068px;
+    margin: auto;
+    width: 100%;
+}
+/* <Header>*/
+header{
+    position: fixed;/*  tenga una posición fija en la ventana del navegador.*/
+    top: 0;/* Coloca el <header> en la  parte superior */
+    left: 0;/* Coloca el <header> en la  parte izquierda*/
+    width: 100%;/* Esto hace que ocupe todo el ancho disponible.*/
+    background: var(--container-color);/* Define el color de fondo del <header> con el root en este caso bg-color #ffff que es color blanco*/
+    box-shadow: 0 1px 4px hsla(0, 0%, 98%, 0.1);/* Añade una sombra al <header> para darle un efecto elevado.*/
+    z-index: 100;/* Elimina el margen*/
+}
+.nav{
+    display: flex;
+    align-items: center; /**/
+    justify-content: space-between;/*Alinea los elementos hijos verticalmente al centro.*/
+    padding: 20px 0;/**/
+}
+.logo{
+    font-size: 1.1rem;/**/
+    color: var(--bg-color) ;/**/
+    font-weight: 600;/*define el grosor*/
+}
+#cart-icon{
+    position: relative;/*establece el icono del carrito*/
+    font-size: 1.8rem;/*define el tamaño */
+    cursor: pointer;/*cuando el usuario pasa el mouse sobre el ícono, indicando que es clickeable.*/
+}
+/* Oculta el círculo si la cantidad es 0 */
+#cart-icon[data-quantity="0"]::after {
+    contain: ""; 
+}
+
+/* Muestra el círculo con la cantidad */
+#cart-icon[data-quantity]::after {
+    content: attr(data-quantity);
+    position: absolute;
+    top: 0;
+    right: -12px;
+    width: 20px;
+    height: 20px;
+    background: var(--text-color);
+    border-radius: 50%;
+    color: white;
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+ 
+/* Cart*/
+.cart{
+    position: fixed;/*Fija el carrito en la ventana del navegador, de modo que no se mueva al hacer scroll.*/
+    top: 0;/*Coloca el carrito en la esquina superior derecha de la ventana.*/
+    right: -100%;/**/
+    width: 360px;/*Define el ancho del carrito como 360px.*/
+    min-height: 100vh;/*Establece que el carrito ocupe al menos el 100% del alto de la ventana (viewport height).*/
+    padding: 20px;/*Añade un relleno interno de 20px.*/
+    background: var(--container-color);/*Define el color de fondo del carrito usando la variable*/
+    box-shadow: -2px 0 4px hsl(0, 4%, 15% / 10%);/*Añade una sombra al carrito para darle un efecto de elevación*/
+    transition: 0,3s cubic-bezier(0.075, 0.82, 0.165, 1);/*Define una transición suave de 0.3s para cualquier cambio en el carrito (por ejemplo, al abrirlo o cerrarlo).*/
+}
+.cart.active{
+    right: 0;
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);/*Define una transición suave de 0.3s para cualquier cambio en el carrito (por ejemplo, al abrirlo o cerrarlo).*/
+}
+.cart-title{
+    text-align: center;/*Centra el texto horizontalmente.*/
+    font-size: 1.5rem;/* Define el tamaño de la fuente como 1.5 veces el tamaño base (~24px).*/
+    font-weight: 600;/*Establece el grosor de la fuente como seminegrita.*/
+    margin-top: 2rem;/*Añade un margen superior de 2rem (32px).*/
+}
+.total{
+    display: flex;/**/
+    justify-content: flex-end;/* Alinea los elementos a la derecha */
+    margin-top: 1.5rem;/**/
+    border-top: 1px solid var(--text-color);/**/
+}
+.total-title{/**/
+    font-size: 1.2rem;/**/
+    font-weight: 600;/**/
+    margin-top: 1rem;/**/
+}
+.total-price{
+    font-size: 1.075rem;/**/
+    margin: 1rem 0 0 0.7rem;/**/
+}
+.btn-buy{
+    display: flex;/*Centra el contenido del botón horizontalmente.*/
+    justify-content: center;/**/
+    margin: 1.5rem auto 0 auto;/**/
+    padding: 12px 20px;/*Añade un relleno interno de 12px en la parte superior/inferior y 20px en los lados.*/
+    width: 50%;/* Define el ancho del botón como el 50% del contenedor padre.*/
+    text-align: center;/**/
+    border: none;/* Elimina el borde del botón.*/
+    border-radius: 2rem ;/*Redondea las esquinas del botón para darle un aspecto más suave.*/
+    background: var(--text-color);/*Define el color de fondo del botón usando la variable*/
+    color: var(--bg-color); /*Define el color del texto del botón como blanco.*/
+    font-style: italic;/*Aplica un estilo de fuente cursiva.*/
+    font-weight: 500;/* Texto en negrita */
+    cursor: pointer;/*Cambia el cursor a una manita al pasar el mouse */
+}
+#close-cart{
+    position: absolute;
+    top: 1rem;
+    right: 0.0rem;
+    font-size: 2rem; /* Tamaño del ícono: 2 rem */
+    color: var(--text-color);
+    cursor: pointer;  /* Cambia el cursor a "mano" al pasar el mouse */
+}
+.cart-box{
+    display: grid;
+    grid-template-columns: 32% 50% 18%;
+    align-items: center;   /* Centra verticalmente los elementos */
+    gap: 1rem;  /* Espacio de 1 rem entre columnas */
+    margin-top: 1rem;  /* Margen superior de 1 rem */
+}
+.cart-img{
+    width: 100px;
+    height: 100px;
+    object-fit: contain;  /* Ajusta la imagen sin recortarla */
+    object-position:center ;
+    padding: 10px;
+}
+.detail-box{
+    display: grid;  /* Usa CSS Grid para alinear los detalles */
+    row-gap: 0.5rem;  /* Espacio vertical entre filas (0.5 rem) */
+}
+.cart-product-title{
+    font-size: 1rem;
+    font-weight: 500;  /* Peso de fuente medio (negrita ligera) */
+    text-transform: uppercase;  /* Convierte el texto a MAYÚSCULAS */
+}
+.cart-price{
+    font-weight: 500;
+}
+.cart-quantity{
+    border: 1px solid var(--text-color);
+    outline-color:var(--main-color) ; /* Color del borde al enfocar */
+    width: 2.8rem;  /* Ancho del input (2.8 rem) */
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 4px; /* Bordes redondeados de 4px */
+}
+.cart-remove{
+    font-size: 24px; /* Tamaño del ícono (24px) */
+    color: var(--main-color);
+    cursor: pointer;  /* Cambia el cursor a "mano" al pasar el mouse */
+}
+.selection-title{
+    font-size: 1.5rem ;
+    font-weight: 600;
+    text-align: center;
+    margin-bottom: 1.8rem;
+}
+.shop{
+    margin-top: 2rem; /* Margen superior de 2 rem */
+}
+.shop-content{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px,auto));
+    /* Cada columna tendrá un ancho mínimo de 200px.
+    Las columnas se expandirán automáticamente si hay espacio disponible.
+    Si el ancho de la pantalla se reduce, las columnas se ajustarán o apilarán.*/
+    gap: 1.5rem ;
+}
+.product-box{
+    position: relative;
+    background: #2d2e37;
+    padding: 5px;
+    transition:0.4 cubic-bezier(0.075, 0.82.0165, 1) ;
+    
+}
+.product-box:hover{
+    background: var(--bg-color);
+    border: 1px solid #f0f0f0;
+    box-shadow: 0 8px 32px hsla(0.75, 0.82, 0.165, 1);
+    transition:0.4 cubic-bezier(0.075, 0.82.0165, 1);
+}
+.product-box:hover .product-title,
+.product-box:hover .price{
+    color: #141414;
+}
+.product-img{
+    width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+}
+.product-title{
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase ;
+    margin-bottom: 0.8rem;
+}
+.price{
+    font-weight: 500;
+}
+.add-cart{
+    position:absolute ;
+    bottom: 9px;
+    right: 9px;
+    background: var(--text-color);
+    color: var(--bg-color);
+    padding: 9px;
+    font-size: 1rem;
+    border-radius: 30%;
+    cursor: pointer;
+}
+.add-cart:hover{
+    background: hsl(249, 32%, 17%);
+}
+.sc-container{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.sc-container img{
+    width: 225px; /* Ancho de la imagen: 225px */
+    margin: 2rem 0; /* Margen superior e inferior de 2 rem */
+}
+.sc-container h1{
+    font-size: 2.8rem;
+    margin-bottom: 10px;
+}
+.sc-container p{
+    max-width: 600px;
+    font-size: 0.970rem;
+    text-align: center;
+    margin: 0.5rem 0;
+}
+.sc-btn{
+    padding: 15px 25px;
+    border-radius: 1.5rem;
+    background:var(--text-color);
+    color: var(--bg-color);
+    font-size: 1.3rem;
+    font-weight: 500;
+}
+/* Maring Responsive */
+@media (max-width: 1080px){
+    .nav{
+        padding: 14px 0;
+    }
+    section{
+        padding: 3rem 0 2rem;
+    }
+    .container{
+        margin: 0 auto;
+        width: 90%;
+    }
+    .shop{
+        margin-top: 2rem !important;
+    }
+}
+@media (max-width: 400px){
+    .nav{
+        padding: 12px 0;
+    }
+    .logo{
+        font-size: 1rem;
+    }
+    .cart{
+        width: 320px;
+    }
+}
+@media (max-width: 360px){
+    .shop{
+        margin-top: 1.5rem !important;
+    }
+    .cart{
+        width: 100%;
+    }
+}
